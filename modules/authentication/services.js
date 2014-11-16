@@ -44,7 +44,7 @@ angular.module('Authentication')
         };
 
         service.ClearCredentials = function () {
-            delete $rootScope.globals;
+            $rootScope.globals = {};
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
