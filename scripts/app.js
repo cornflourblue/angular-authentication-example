@@ -16,8 +16,7 @@ angular.module('BasicHttpAuthExample', [
     $routeProvider
         .when('/login', {
             controller: 'LoginController',
-            templateUrl: 'modules/authentication/views/login.html',
-            hideMenus: true
+            templateUrl: 'modules/authentication/views/login.html'
         })
 
         .when('/', {
