@@ -3,8 +3,8 @@
 angular.module('Authentication')
 
 .factory('AuthenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    ['Base64', '$http', '$cookies', '$rootScope', '$timeout',
+    function (Base64, $http, $cookies, $rootScope, $timeout) {
         var service = {};
 
         service.Login = function (username, password, callback) {
@@ -40,12 +40,12 @@ angular.module('Authentication')
             };
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
+            $cookies.put('globals', $rootScope.globals);
         };
 
         service.ClearCredentials = function () {
             $rootScope.globals = {};
-            $cookieStore.remove('globals');
+            $cookies.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
 
